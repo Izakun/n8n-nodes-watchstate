@@ -36,6 +36,8 @@ export class Watchstate implements INodeType {
 					{ name: 'Get Backends', value: 'getBackends', action: 'Get many backends' },
 					{ name: 'Get Health', value: 'getHealth', action: 'Get the system health' },
 					{ name: 'Get History', value: 'getHistory', action: 'Get the play history' },
+					{ name: 'Get Tasks', value: 'getTasks', action: 'Get scheduled tasks' },
+					{ name: 'Get Version', value: 'getVersion', action: 'Get the server version' },
 				],
 				default: 'getBackends',
 			},
@@ -48,8 +50,10 @@ export class Watchstate implements INodeType {
 
 		const URL_BY_OP: Record<string, string> = {
 			getBackends: '/v1/api/backends',
-			getHealth: '/v1/api/system/health',
+			getHealth: '/v1/api/system/healthcheck',
 			getHistory: '/v1/api/history',
+			getTasks: '/v1/api/tasks',
+			getVersion: '/v1/api/system/version',
 		};
 
 		for (let i = 0; i < items.length; i++) {
@@ -76,11 +80,8 @@ export class Watchstate implements INodeType {
 					} as IHttpRequestOptions,
 				);
 
-				const rows = Array.isArray(response)
-					? response
-					: ((response as IDataObject)?.history as IDataObject[]) ?? null;
-				if (Array.isArray(rows)) {
-					for (const element of rows) {
+				if (Array.isArray(response)) {
+					for (const element of response) {
 						returnData.push({ json: element as IDataObject, pairedItem: { item: i } });
 					}
 				} else {

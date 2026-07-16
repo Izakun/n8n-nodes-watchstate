@@ -46,7 +46,7 @@ export class WatchstateApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{$credentials.baseUrl}}',
-			url: '/v1/api/system/health',
+			url: '/v1/api/backends',
 		},
 	};
 }
