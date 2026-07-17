@@ -12,5 +12,18 @@ Install via **Settings -> Community Nodes -> Install** -> `n8n-nodes-watchstate`
 ## Credentials
 Configure the base URL and authentication in the **WatchState API** credential.
 
+## Usage example
+
+List configured backends:
+
+1. Add the node after a trigger (e.g. *When clicking 'Test workflow'*).
+2. Select your credential.
+3. **Get Backends**.
+4. Execute the node — example output:
+
+```json
+{ "name": "plex_home", "type": "plex", "import": true, "export": true }
+```
+
 ## Disclaimer
 Not affiliated with or endorsed by the respective project.
