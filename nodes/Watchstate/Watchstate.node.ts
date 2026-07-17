@@ -16,7 +16,7 @@ export class Watchstate implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'WatchState',
 		name: 'watchstate',
-		icon: { light: 'file:watchstate.svg', dark: 'file:watchstate.svg' },
+		icon: { light: 'file:watchstate.svg', dark: 'file:watchstate.dark.svg' },
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
