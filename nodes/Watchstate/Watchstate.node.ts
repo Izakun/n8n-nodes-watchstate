@@ -69,7 +69,7 @@ export class Watchstate implements INodeType {
 					});
 				}
 
-				const response = await this.helpers.httpRequestWithAuthentication.call(
+				const full = (await this.helpers.httpRequestWithAuthentication.call(
 					this,
 					'watchstateApi',
 					{
@@ -77,8 +77,24 @@ export class Watchstate implements INodeType {
 						baseURL,
 						url,
 						json: true,
+						returnFullResponse: true,
+						ignoreHttpStatusErrors: true,
 					} as IHttpRequestOptions,
-				);
+				)) as { statusCode: number; body: IDataObject };
+
+				// WatchState answers 404 "No Results." for an empty collection
+				// (e.g. history with no synced backends): treat it as no data.
+				const errCode = (full.body?.error as IDataObject)?.code;
+				if (full.statusCode === 404 && (errCode === 404 || full.body?.error)) {
+					continue;
+				}
+				if (full.statusCode >= 400) {
+					throw new NodeApiError(this.getNode(), (full.body ?? {}) as JsonObject, {
+						itemIndex: i,
+						httpCode: String(full.statusCode),
+					});
+				}
+				const response = full.body;
 
 				if (Array.isArray(response)) {
 					for (const element of response) {
