@@ -5,17 +5,24 @@
 [![npm version](https://img.shields.io/npm/v/n8n-nodes-watchstate.svg)](https://www.npmjs.com/package/n8n-nodes-watchstate)
 [![npm downloads](https://img.shields.io/npm/dm/n8n-nodes-watchstate.svg)](https://www.npmjs.com/package/n8n-nodes-watchstate)
 [![License: MIT](https://img.shields.io/npm/l/n8n-nodes-watchstate.svg)](./LICENSE)
+[![n8n verified](https://img.shields.io/badge/n8n-verified%20community%20node-EA4B71)](https://docs.n8n.io/integrations/community-nodes/installation/verified-install/)
 
 Community node for **n8n** to interact with **WatchState**. It lets you automate
 WatchState directly from your n8n workflows using a secure stored credential.
 
-> 🟡 **Community node** — submitted to n8n for verification (review in progress).
-> Until it is approved, install it as a community node (below).
+> ✅ **Verified community node** — installable directly from the n8n node panel
+> (self-hosted **and** n8n Cloud).
 
 ## Installation
 
-In n8n, go to **Settings → Community Nodes → Install** and enter `n8n-nodes-watchstate`.
-Once it passes n8n's verification it will also be available directly from the **+ (Add node)** panel.
+This is a **verified** community node: in n8n click **+ (Add node)**, search for
+**WatchState**, and add it — no manual install needed.
+
+<details>
+<summary>Manual install (older n8n, or as an unverified package)</summary>
+
+Go to **Settings → Community Nodes → Install** and enter `n8n-nodes-watchstate`.
+</details>
 
 ## Operations
 
